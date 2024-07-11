@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, MenuItem } = require('electron');
+const { app, BrowserWindow, Menu, MenuItem, powerSaveBlocker } = require('electron');
 const path = require('path');
 
 let win;
@@ -10,7 +10,6 @@ function createWindow() {
         width: 1280,
         height: 800,
         resizable: false,
-        fullscreen: true,
         frame: false,
     });
     win.loadURL('https://www.youtube.com/tv/', {
@@ -26,8 +25,10 @@ function createWindow() {
         })
     );
     win.setMenu(menu);
+    const powerSaveBlockerId = powerSaveBlocker.start('prevent-display-sleep');
     win.on('closed', () => {
         win = null;
+        powerSaveBlocker.stop(powerSaveBlockerId);
     });
 }
 
