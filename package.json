@@ -1,0 +1,25 @@
+{
+    "name": "TouchTube",
+    "version": "1.0.0",
+    "description": "Electron wrapper for the YouTube for TV site",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder build"
+    },
+    "author": "Redeven",
+    "license": "MIT",
+    "build": {
+        "appId": "dev.redeven.touchtube",
+        "linux": {
+            "target": [
+                "AppImage"
+            ],
+            "category": "AudioVideo"
+        }
+    },
+    "devDependencies": {
+        "electron": "^31.2.0",
+        "electron-builder": "^24.13.3"
+    }
+}
